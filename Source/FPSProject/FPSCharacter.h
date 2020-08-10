@@ -26,6 +26,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	float Fire_Timer = 0.0f;
+	bool bOnfire = false;
 
 
 	// 전후 이동 처리
@@ -60,6 +62,9 @@ public:
 
 	UFUNCTION()
 	void Fire();
+
+	UFUNCTION()
+	void FireStop();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "GamePlay")
 	FVector MuzzleOffset;

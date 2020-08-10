@@ -19,8 +19,8 @@ AFPSProjectile::AFPSProjectile()
 
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
 	ProjectileMovementComponent->SetUpdatedComponent(CollisionComponent);
-	ProjectileMovementComponent->InitialSpeed = 4000.0f;
-	ProjectileMovementComponent->MaxSpeed = 4000.0f;
+	ProjectileMovementComponent->InitialSpeed = 7000.0f;
+	ProjectileMovementComponent->MaxSpeed = 7000.0f;
 	ProjectileMovementComponent->bRotationFollowsVelocity = true;
 	ProjectileMovementComponent->bShouldBounce = true;
 	ProjectileMovementComponent->Bounciness = 0.3f;

@@ -64,6 +64,18 @@ void AFPSCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (bOnfire)
+	{
+		Fire_Timer += DeltaTime;
+
+		if (Fire_Timer >= 0.1f)
+		{
+			Fire();
+			Fire_Timer = 0.0f;
+		}
+		
+	}
+
 }
 
 // Called to bind functionality to input
@@ -90,6 +102,7 @@ void AFPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &AFPSCharacter::StopJump);
 
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &AFPSCharacter::Fire);
+	PlayerInputComponent->BindAction("Fire", IE_Released, this, &AFPSCharacter::FireStop);
 
 }
 
@@ -125,6 +138,13 @@ void AFPSCharacter::StopJump()
 	bPressedJump = false;
 }
 
+
+void AFPSCharacter::FireStop()
+{
+	bOnfire = false;
+	Fire_Timer = 0.0f;
+}
+
 void AFPSCharacter::Fire()
 {
 	if (ProjectileClass)
@@ -153,6 +173,11 @@ void AFPSCharacter::Fire()
 			{
 				FVector LaunchDirection = MuzzleRotation.Vector();
 				Projectile->FireInDirection(LaunchDirection);
+				if (bOnfire == false)
+				{
+					bOnfire = true;
+				}
+
 			}
 		}
 	
