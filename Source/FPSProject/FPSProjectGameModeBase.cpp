@@ -1,0 +1,20 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
+
+#include "FPSProjectGameModeBase.h"
+
+void AFPSProjectGameModeBase::StartPlay()
+{
+	Super::StartPlay();
+
+	if (GEngine) 
+	{
+		// 디버그 메시지를 5초간 표시합니다.
+		// "키" (첫 번째 인수) 값을 -1로 하면 이 메시지를 절대 업데이트하거나 새로고칠 필요가 없음을 나타냅니다.
+		GEngine->AddOnScreenDebugMessage(-1, 10.0f, FColor::Red, TEXT("I must do this project!"));
+
+
+	}
+
+
+}
